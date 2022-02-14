@@ -47,7 +47,7 @@
 	</form> 
     <?php 
         //insert data 
-        if (@$_POST['submite']) {
+        if (isset($_POST['submite'])) {
             $nom=$_POST['nome'];
             $Email=$_POST['email'];
             $Phone=$_POST['phone'];

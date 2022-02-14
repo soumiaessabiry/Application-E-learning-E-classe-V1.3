@@ -27,9 +27,12 @@
                 <?php include 'navbar.php' ?>
                 <div class="d-flex justify-content-between mt-3 ">
                     <div >
-                        <a href="addcours.php" class="fs-3 fw-bold me-3 ">Course</a>
+                        <a href="#" class="fs-3 fw-bold me-3 ">Course</a>
+                        
                     </div>
+
                     <div class="d-flex justify-content-between align-items-center gap-3">
+                    <a href="addcours.php" class="fs-3 fw-bold me-3 ">Add course</a>
                         <i class="bi bi-chevron-expand fs-4 fw-bold" style="color:#00C1FE;"></i>
                         
                     </div>
