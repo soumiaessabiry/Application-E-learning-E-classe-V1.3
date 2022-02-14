@@ -1,4 +1,10 @@
-
+<?php
+     
+    //connextion db 
+        // include "connexion.php";
+        
+    ?>
+ 
  <div class="row flex-nowrap" style="height: 100vh;">
         <div class="col-auto col-md-auto col-xl-2 px-sm-auto px-0 collapse d-lg-block  d-md-none " style="background:#FAFFC1 ;"  id="collapseExample">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 ">
@@ -45,7 +51,7 @@
                             </a>
                         </li>
                         <li class="nav-item fs-5 mt-5"  >
-                        <a href="#" class="nav-link align-middle px-4" >
+                        <a href="logout.php" class="nav-link align-middle px-4" >
                                 <i class="bi bi-box-arrow-right"></i><span class="ms-1 d-none d-sm-inline">Logout</span>
                             </a>
                         </li>  

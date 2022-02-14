@@ -19,13 +19,15 @@
                     $_SESSION['last_name']=$compte['last_name'];
                     $_SESSION['password']=$password;
                     $_SESSION['email']=$email;
-                header("location: indexdach.php");
+                     header("location: indexdach.php");
             }
             else{
                 echo"invalid email or password";
             }
 
         }
+       
+       
        ?>
 <!doctype html>
         <html lang="en">
@@ -64,6 +66,7 @@
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
     </body>
 </html>
+
 
 
 
