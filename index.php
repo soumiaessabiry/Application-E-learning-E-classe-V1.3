@@ -10,13 +10,16 @@
             $password=md5($_POST['password']);//hach
 
             $query="SELECT * FROM `comptes` WHERE email='$email' AND  password='$password'";
-            $user = mysqli_query($conn,$query) ;
+            $user = mysqli_query($conn,$query);
+            $compte = mysqli_fetch_assoc($user);
             if (mysqli_num_rows($user)  != 0 ) {
 
                 session_start();
-                 $_SESSION['email']=$email;
+                    $_SESSION['first_name']=$compte['first_name'];
+                    $_SESSION['last_name']=$compte['last_name'];
+                    $_SESSION['password']=$password;
+                    $_SESSION['email']=$email;
                 header("location: indexdach.php");
-
             }
             else{
                 echo"invalid email or password";
@@ -36,7 +39,7 @@
         </head>
     <body>
         <div class="container mt-5 ">
-            <form class=" bg-white p-2 " method="POST" action="comptes.php">
+            <form class=" bg-white p-2 " method="POST" action="">
                         <h1 class=" p-4"><span  class="border-start border-info border-5 ps-2 fw-bolder ms-3">E-classe</span> </h1>
                     <div  class="text-center font-weight-normal">  
                          <h2 class=""> SIGN IN</h2>

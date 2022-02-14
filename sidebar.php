@@ -5,7 +5,12 @@
              		 <span class=" fs-4 my-2 fs-5 d-none d-sm-inline" style="color: black;"><span class="border-start border-info border-5 ps-2 fw-bolder ms-3 align-text-top  ">E-classe</span> </span>
                    <div class="text-center p-3 ">
                       <img src="logoyouc.jpg" alt="hugenerd" width="130" height="130" class="rounded-circle d-none d-md-block ">                
-                      <a href="#" class="navbar-brand mx-0 fw-bold text-nowrap  d-none d-md-block ">Admin name</a>
+                      <a href="#" class="navbar-brand mx-0 fw-bold text-nowrap  d-none d-md-block ">
+                          <?php
+                            session_start();
+                            echo $_SESSION['first_name'] .' '. $_SESSION['last_name'];
+                          ?>
+                      </a>
                       <a href="#" class="navbar-brand mx-0 text-nowrap  d-none d-md-block fs-5"><span style="color: darkturquoise;">Admin</span> </a>
                     </div>
                     <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start d-flex justify-content-center me-2 mb-md-0 " id="menu" >

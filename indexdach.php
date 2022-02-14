@@ -1,5 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+          <?php
+
+			include "connexion.php";
+            // for student
+            $query="SELECT * from students";
+            $count=mysqli_query($conn,$query) ;
+            $stud = mysqli_num_rows($count); 
+            // for coure
+            $query="SELECT * from courses";
+            $count=mysqli_query($conn,$query) ;
+            $cour = mysqli_num_rows($count); 
+            // for total paymenyt
+            $query="SELECT SUM(amount_paid) AS total FROM payment_details";
+            $count=mysqli_query($conn,$query) ;
+            $pay = mysqli_fetch_assoc($count); 
+            $som = $pay['total'];
+              // for user
+              $query="SELECT * from comptes";
+              $count=mysqli_query($conn,$query) ;
+              $user = mysqli_num_rows($count); 
+            
+			?>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,7 +51,7 @@
                                 <div class="col p-4"  style="background:#F0F9FF; position: relative; border-radius: 20px;; ">
                                     <i class="bi bi-mortarboard fs-1"  style="color: #74C1ED ;position:relative;background:#F0F9FF ;"></i>
                                 <a href="indexstudent.php"><p class="fw-normal fs-4 " style="color:#6C6C6C;">Students</p></a> 
-                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2">243</p>
+                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2">  <?php echo $stud; ?> </p>
                                 </div>
                             </div>
 
@@ -37,7 +59,7 @@
                                 <div class="col p-4"  style="background:#FEF6FB; position: relative; border-radius: 20px;">
                                     <i class="bi bi-bookmark fs-1"  style="color:#EE95C5 ;position:relative;background:#FEF6FB  30px; " ></i>
                                 <a href="#"> <p class="fw-normal fs-4 " style="color:#6C6C6C;">Course</p></a>
-                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2">13</p>
+                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2"> <?php echo $cour; ?> </p>
                                 </div>
                             </div>
 
@@ -45,7 +67,7 @@
                                 <div class="col p-4"  style="background:#FEFBEC; position: relative; border-radius: 20px;">
                                     <i class="bi bi-currency-dollar fs-1"  style="color: #00C1FE ;position:relative;background:#FEFBEC ; border:solid #00C1FE;"></i>
                                 <a href="indexpay.php"><p class="fw-normal fs-4 " style="color:#6C6C6C;">Payments</p></a>
-                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2 px-4 "> <span class="fs-4 ">556,000 DHS</span></p>
+                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2 px-4 "> <span class="fs-4 "><?php echo $som.'dhs'; ?> </span></p>
                                 </div>
                             </div>
 
@@ -54,7 +76,7 @@
                                     <i class="bi bi-person fs-1"  style="color:white;background:#3dc9f3;position:relative;"></i>
                                     <a href="#"><p class="fw-normal fs-4 " style="color:#6C6C6C;">User</p>
                                     </a>
-                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2">243</p>
+                                    <p class="d-flex justify-content-lg-end fw-bolder fs-2">  <?php echo $user; ?> </p>
                                 </div>
                             </div>
                         </div>
