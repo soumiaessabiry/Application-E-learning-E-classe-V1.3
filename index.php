@@ -27,7 +27,8 @@
                         
                 }
                 else{
-                        echo"invalid email or password";
+                        $error='<h5 class="alert alert-danger"><strong>Invalid Email or Password !!!!!</strong></h5> ';
+
                 }
 
             } else{
@@ -57,6 +58,12 @@
                          <h2 class=""> SIGN IN</h2>
                         <p  class="text-muted ms-3 mx-3 ">Entrer your credentials to access your account</p>
                     </div>
+
+                    <?php 
+                                if (!empty($error)) {
+                                    echo $error;
+                                }
+                            ?>
                     <div class="m-4 fw-bold">
                             <label  class="text-muted mb-2 fw-bold">Email</label>
                             <input type="email" name="email" class="form-control form-control-lg  " placeholder="Entrer your email" required >
