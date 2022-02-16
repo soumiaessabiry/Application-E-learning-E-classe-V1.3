@@ -1,35 +1,45 @@
-
-       <?php
-    //connextion db 
-        include ("connexion.php");
-        include ("lesfonctions.php");
+<?php
+           //connextion db 
+           
+            include ("connexion.php");
+            include ("lesfonctions.php");
         
-        if (isset($_POST['submit'])) {
+            if (isset($_POST['submit'])) {
 
-            $email=validation($_POST['email']);
-            $password=md5($_POST['password']);//hach
+                $email=validation($_POST['email']);
+                $password=md5($_POST['password']);//hach
 
-            $query="SELECT * FROM `comptes` WHERE email='$email' AND  password='$password'";
-            $user = mysqli_query($conn,$query);
-            $compte = mysqli_fetch_assoc($user);
-            if (mysqli_num_rows($user)  != 0 ) {
+                $query="SELECT * FROM `comptes` WHERE email='$email' AND  password='$password'";
+                $user = mysqli_query($conn,$query);
+                $compte = mysqli_fetch_assoc($user);
+                if (mysqli_num_rows($user)  != 0 ) {
+                     //pour tempts
+                    ini_set('session.gc_maxlifetime', 3600*24);
+                     // each client should remember their session id for EXACTLY 1 hour
+                    session_set_cookie_params(3600*24);
+                        session_start();
+                        $_SESSION['first_name']=$compte['first_name'];
+                        $_SESSION['last_name']=$compte['last_name'];
+                        $_SESSION['email']=$email;
+                       header("location:indexdach.php");
+                       echo" vous connectez";
+                      
+                        
+                }
+                else{
+                        echo"invalid email or password";
+                }
 
+            } else{
                 session_start();
-                    $_SESSION['first_name']=$compte['first_name'];
-                    $_SESSION['last_name']=$compte['last_name'];
-                    $_SESSION['password']=$password;
-                    $_SESSION['email']=$email;
-                     header("location: indexdach.php");
+                // print_r($_SESSION);
+                if(isset($_SESSION['first_name'])){
+                    header('location:indexdach.php');
+                
+    }
             }
-            else{
-                echo"invalid email or password";
-            }
-
-        }
-       
-       
-       ?>
-<!doctype html>
+?>
+<!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="utf-8">

@@ -1,8 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
 <?php
 			include "connexion.php";
+            include 'session.php';
 ?>
+<!DOCTYPE html>
+<html lang="en">
+
 
 <head>
     <meta charset="UTF-8">

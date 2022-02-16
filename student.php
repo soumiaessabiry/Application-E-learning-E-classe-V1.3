@@ -1,3 +1,4 @@
+<?php include 'session.php'; ?>
 <!DOCTYPE html>
         <html lang="en">
 
@@ -30,7 +31,8 @@
 								<i class="bi bi-chevron-expand fs-2 fw-bold" style="color:#00C1FE;"></i>
 								<div> 
 								<form class="d-flex">
-									<button type="button" class="btn" style="background:#00C1FE ;">ADD NEW STUDENT</button>									</form>
+									<button type="button" class="btn" style="background:#00C1FE ;">ADD NEW STUDENT</button>									
+								</form>
 								</div>
 							</div>
 						</div>
@@ -49,10 +51,7 @@
 								</tr>
 						</thead>
 						<tbody style="height: 352px; text-align:center">
-                        <?php 
-                         $stocdonne=file_get_contents('student.json');
-                               $p=json_decode($stocdonne,true);
-                        ?>
+                      
 						<?php 
                               
 								foreach ($student as $key => $p) {

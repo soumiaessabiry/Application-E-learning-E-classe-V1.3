@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-          <?php
-                session_start();
-			include "connexion.php";
+<?php
+            include 'session.php';
+            include "connexion.php";
+            
             // for student
             $query="SELECT * from students";
             $count=mysqli_query($conn,$query) ;
@@ -20,9 +19,11 @@
               $query="SELECT * from comptes";
               $count=mysqli_query($conn,$query) ;
               $user = mysqli_num_rows($count); 
-
-            
 			?>
+
+<!DOCTYPE html>
+<html lang="en">
+        
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

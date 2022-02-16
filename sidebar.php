@@ -1,10 +1,9 @@
 <?php
-     
+
     //connextion db 
-        // include "connexion.php";
-        
+        //session_start();
+       
     ?>
- 
  <div class="row flex-nowrap" style="height: 100vh;">
         <div class="col-auto col-md-auto col-xl-2 px-sm-auto px-0 collapse d-lg-block  d-md-none " style="background:#FAFFC1 ;"  id="collapseExample">
             <div class="d-flex flex-column align-items-center align-items-sm-start px-3 pt-2 text-white min-vh-100 ">
@@ -12,10 +11,7 @@
                    <div class="text-center p-3 ">
                       <img src="logoyouc.jpg" alt="hugenerd" width="130" height="130" class="rounded-circle d-none d-md-block ">                
                       <a href="#" class="navbar-brand mx-0 fw-bold text-nowrap  d-none d-md-block ">
-                          <?php
-                            session_start();
-                            echo $_SESSION['first_name'] .' '. $_SESSION['last_name'];
-                          ?>
+                          <?php echo $_SESSION['first_name'] .' '. $_SESSION['last_name']; ?>
                       </a>
                       <a href="#" class="navbar-brand mx-0 text-nowrap  d-none d-md-block fs-5"><span style="color: darkturquoise;">Admin</span> </a>
                     </div>
@@ -26,7 +22,7 @@
                             </a>
                         </li>
                         <li class="nav-item fs-5 mt-3" >
-                            <a href="indexstudent.php" class="nav-link align-middle px-4">
+                            <a href="indexcour.php" class="nav-link align-middle px-4">
                             <i class="bi bi-bookmark"></i><span class="ms-1 d-none d-sm-inline">Course</span>
                             </a>
                         </li>
@@ -60,5 +56,4 @@
         </div>
 
                         
-
                 
