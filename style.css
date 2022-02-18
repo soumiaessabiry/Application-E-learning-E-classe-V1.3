@@ -25,8 +25,9 @@ form{
 a{
     text-decoration: none !important;
     color:#0dcaf0 !important;
+    color: black !important;
+    font-weight: bold !important;
 }
-a {
-    color: white!important;
-    text-decoration: none !important;
+a:hover{
+    background-color: yellowgreen !important;
 }

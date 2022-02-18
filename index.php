@@ -11,20 +11,18 @@
 
                 $query="SELECT * FROM `comptes` WHERE email='$email' AND  password='$password'";
                 $user = mysqli_query($conn,$query);
-                $compte = mysqli_fetch_assoc($user);
-                if (mysqli_num_rows($user)  != 0 ) {
+                $compte = mysqli_fetch_assoc($user);//mysqli_result::fetch_assoc -- mysqli_fetch_assoc — Récupère une ligne de résultat sous forme de tableau associatif
+                if (mysqli_num_rows($user)  != 0 ) {//Retourne le nombre de lignes affectées par la dernière opération MySQL
                      //pour tempts
-                    ini_set('session.gc_maxlifetime', 3600*24);
+                    ini_set('session.gc_maxlifetime', 3600*24);//Spécifie la durée de vie des données sur le serveur, en nombre de secondes.
                      // each client should remember their session id for EXACTLY 1 hour
-                    session_set_cookie_params(3600*24);
+                    session_set_cookie_params(3600*24);//Modifie les paramètres de configuration du cookie de session, qui a été configuré dans le fichier php.ini
                         session_start();
                         $_SESSION['first_name']=$compte['first_name'];
                         $_SESSION['last_name']=$compte['last_name'];
                         $_SESSION['email']=$email;
                        header("location:indexdach.php");
                        echo" vous connectez";
-                      
-                        
                 }
                 else{
                         $error='<h5 class="alert alert-danger"><strong>Invalid Email or Password !!!!!</strong></h5> ';
@@ -74,7 +72,9 @@
                         </div>
                     </div>
                     <div class=" mt-4 mb-5 forgot">
-                        <P class="d-flex justify-content-center " >Forgot your password? <span class="fw-bold"><a href="#">Reset Password</a></span></P>
+                        <P class="d-flex justify-content-center " >Forgot your password? </P>
+                        <a class="fw-bold d-flex justify-content-center " href="inscription.php">Create new account </a>
+                        
                     </div>
             </form>
          </div>

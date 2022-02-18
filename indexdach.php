@@ -16,10 +16,10 @@
             $pay = mysqli_fetch_assoc($count); 
             $som = $pay['total'];
               // for user
-              $query="SELECT * from comptes";
-              $count=mysqli_query($conn,$query) ;
-              $user = mysqli_num_rows($count); 
-			?>
+            $query="SELECT * from comptes";
+            $count=mysqli_query($conn,$query) ;
+            $user = mysqli_num_rows($count); 
+?>
 
 <!DOCTYPE html>
 <html lang="en">
