@@ -45,8 +45,12 @@
             $Discription=$_POST['discription'];
             $Prix=$_POST['prix'];
             $query="INSERT INTO `courses`(`nom`,`duree`,`discription`,`prix`) VALUES ('$nomlag','$Duree','$Discription','$Prix')";
-            if (mysqli_query($conn,$query)) echo "   insert student is success";
-            else "error";
+            if (mysqli_query($conn,$query)) {
+                echo "   insert student is success";
+                header('location:indexcour.php');
+            }else {
+                "error";
+            }
             
         }
 

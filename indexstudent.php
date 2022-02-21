@@ -72,11 +72,11 @@
 													<td>'. $student['enroll_number'].'</td>
 													<td>'. $student['date_of_admission'].'</td>
 													<td class="text-primary ">
-														<a href="modifier.php"><i class="fas fa-pen pe-3"></i></a>
+														<a href="modifier.php?id='. $student['id'].'"><i class="fas fa-pen pe-3"></i></a>
 														<a href="deletstuent.php?id='. $student['id'].'"><i class="fas fa-trash"></i></a>
 														
 													</td>
-											</tr>';	
+											    </tr>';	
 										 }
 										 mysqli_close($conn);
 

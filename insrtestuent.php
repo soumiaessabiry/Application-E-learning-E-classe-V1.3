@@ -54,8 +54,12 @@
             $Enroll=$_POST['enroll'];
             $Date=$_POST['date'];
             $query="INSERT INTO `students`(`name`, `email`, `phone`, `enroll_number`, `date_of_admission`) VALUES ('$nom','  $Email','  $Phone','$Enroll','$Date')";
-            if (mysqli_query($conn,$query)) echo "   insert student is success";
-            else "error";
+            if (mysqli_query($conn,$query)){
+                echo "   insert student is success";
+                header('location:./indexstudent.php');
+            }else
+            { "error";
+            }
             
         }
 

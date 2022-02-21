@@ -1,42 +1,38 @@
 <?php
            //connextion db 
-           
+           session_start();
             include ("connexion.php");
             include ("lesfonctions.php");
-        
             if (isset($_POST['submit'])) {
-
                 $email=validation($_POST['email']);
                 $password=md5($_POST['password']);//hach
-
                 $query="SELECT * FROM `comptes` WHERE email='$email' AND  password='$password'";
                 $user = mysqli_query($conn,$query);
                 $compte = mysqli_fetch_assoc($user);//mysqli_result::fetch_assoc -- mysqli_fetch_assoc — Récupère une ligne de résultat sous forme de tableau associatif
-                if (mysqli_num_rows($user)  != 0 ) {//Retourne le nombre de lignes affectées par la dernière opération MySQL
+                if (mysqli_num_rows($user) != 0 ) {//Retourne le nombre de lignes affectées par la dernière opération MySQL
                      //pour tempts
-                    ini_set('session.gc_maxlifetime', 3600*24);//Spécifie la durée de vie des données sur le serveur, en nombre de secondes.
-                     // each client should remember their session id for EXACTLY 1 hour
-                    session_set_cookie_params(3600*24);//Modifie les paramètres de configuration du cookie de session, qui a été configuré dans le fichier php.ini
-                        session_start();
+                    // ini_set('session.gc_maxlifetime', 3600*24);//Spécifie la durée de vie des données sur le serveur, en nombre de secondes.
+                    //  // each client should remember their session id for EXACTLY 1 hour
+                    // session_set_cookie_params(3600*24);//Modifie les paramètres de configuration du cookie de session, qui a été configuré dans le fichier php.ini
                         $_SESSION['first_name']=$compte['first_name'];
                         $_SESSION['last_name']=$compte['last_name'];
                         $_SESSION['email']=$email;
-                       header("location:indexdach.php");
-                       echo" vous connectez";
-                }
-                else{
-                        $error='<h5 class="alert alert-danger"><strong>Invalid Email or Password !!!!!</strong></h5> ';
+                        setcookie("email",$email,time()+50);    
+                         header("location:indexdach.php");
+                         echo" vous connectez";
+                } else{
+                     $error='<h5 class="alert alert-danger"><strong>Invalid Email or Password !!!!!</strong></h5> ';
+                    echo $error;
 
                 }
-
             } else{
-                session_start();
-                // print_r($_SESSION);
-                if(isset($_SESSION['first_name'])){
-                    header('location:indexdach.php');
-                
-    }
+                    // print_r($_SESSION);
+                    if(isset($_SESSION['first_name'])){
+                        header('location:indexdach.php');
+                    
+                        }
             }
+           
 ?>
 <!DOCTYPE html>
         <html lang="en">
@@ -50,6 +46,13 @@
         </head>
     <body>
         <div class="container mt-5 ">
+        <?php if (isset($_POST['chec'])) {
+                $email=$_POST['email'];
+                $password=$_POST['password'];
+                setcookie("email",$email,time()+50,'/');    
+                setcookie("password",$password,time()+50,'/');
+            }
+         ?>
             <form class=" bg-white p-2 " method="POST" action="">
                         <h1 class=" p-4"><span  class="border-start border-info border-5 ps-2 fw-bolder ms-3">E-classe</span> </h1>
                     <div  class="text-center font-weight-normal">  
@@ -57,18 +60,22 @@
                         <p  class="text-muted ms-3 mx-3 ">Entrer your credentials to access your account</p>
                     </div>
 
-                    <?php 
+                            <?php 
                                 if (!empty($error)) {
                                     echo $error;
                                 }
                             ?>
                     <div class="m-4 fw-bold">
                             <label  class="text-muted mb-2 fw-bold">Email</label>
-                            <input type="email" name="email" class="form-control form-control-lg  " placeholder="Entrer your email" required >
+                            <input type="email" name="email" class="form-control form-control-lg  " value="<?= $_COOKIE['email'] ?? ''?>" placeholder="Entrer your email" required >
                             <label  class="text-muted mb-2 mt-2">Password</label>
-                            <input type="password" name="password" class="form-control  form-control-lg  " placeholder="Entrer your password "  required >
+                            <input type="password" name="password" class="form-control  form-control-lg  " value="<?= $_COOKIE['password'] ?? ''?>"  placeholder="Entrer your password "  required >
                         <div class="d-grid gap-2 mt-4">
                             <input type="submit"  class="btn btn-info btn-lg" name="submit" value="SIGN IN">
+                        </div>
+                        <div>
+                           enregistrer:
+                            <input type="checkbox"  name="chec">
                         </div>
                     </div>
                     <div class=" mt-4 mb-5 forgot">
