@@ -31,12 +31,12 @@
     <title>dashboard</title>
     <link rel="stylesheet" href="styledas.css">
     <link rel="stylesheet" href="styleboot/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styleboot/js/bootstrap.min.js">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-    <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styleboot/js/bootstrap.min.js">
+            <link rel="stylesheet" href="styleboot/js/bootstrap.min.js">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+            <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+            <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+            <script src="styleboot/js/bootstrap.min.js"></script>
 
 </head>
 <body>

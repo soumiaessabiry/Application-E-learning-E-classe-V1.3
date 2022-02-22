@@ -11,5 +11,5 @@
     if($conn->connect_error){
         die('Erreur : ' .$conn->connect_error);
     }
-    echo 'Connexion réussie';
+    // echo 'Connexion réussie';
 ?>
