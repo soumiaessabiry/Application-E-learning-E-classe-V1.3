@@ -7,7 +7,7 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
             </form>
         <div>
-            <a class="phov" href="#/"><i class="far fa-bell text-muted"></i></a>
+            <span ><i class="far fa-bell text-muted"></i></span>
         </div>
     </div>
 </div>

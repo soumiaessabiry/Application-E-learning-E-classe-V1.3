@@ -37,7 +37,11 @@
             <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
             <script src="styleboot/js/bootstrap.min.js"></script>
-
+    <style>
+        a:hover{
+            background: #00C1FE;
+        }
+    </style>
 </head>
 <body>
     <!-- ******************************* col 1******************************** -->

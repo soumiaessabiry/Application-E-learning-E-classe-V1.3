@@ -5,14 +5,16 @@ body {
 
 .btn{
     color:white !important;
+    color:rgba(224, 22, 22, 0.055) !important;
 }
+
 .forgot{
    
     border:3px solid darkviolet;
     height: 34px;
     padding: 0px !important;
-   max-width: 300px;
-   margin: auto;
+    max-width: 300px;
+    margin: auto;
     
 }
 form{
@@ -25,9 +27,12 @@ form{
 a{
     text-decoration: none !important;
     color:#0dcaf0 !important;
-    color: black !important;
-    font-weight: bold !important;
+    color:white !important;
+        font-weight: bold !important;
 }
-a:hover{
+/* a:hover{
     background-color: yellowgreen !important;
-}
+} */
+/* button{
+    color: white !important;
+} */

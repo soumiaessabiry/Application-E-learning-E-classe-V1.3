@@ -20,9 +20,91 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
     <script src="styleboot/js/bootstrap.min.js"></script>
+    <style>
+        a:hover{
+            background: #00C1FE;
+        }
+        .model{
+            background: linear-gradient(to right,#0dcaf0,#dee4b0);
+            text-align: center;
+        }
+        .label-class{
+            color:black ;
+            font-weight: bold;
+            
+        }
+    </style>
+      
 </head>
 
 <body>
+<?php 
+   
+   //insert data 
+   if (isset($_POST['submite'])) {
+       $nom=$_POST['nome']; 
+       $Payment=$_POST['payment'];
+       $Bill=$_POST['bill'];
+       $Amount=$_POST['amount'];
+       $Balance=$_POST['balance'];
+       $Date=$_POST['date'];
+       $query="INSERT INTO `payment_details`( `name`, `payment _schedule`, `bill_number`, `amount_paid`, `balance_amount`, `date`) VALUES ('$nom',' $Payment','$Bill','$Amount',' $Balance','$Date')";
+       if (mysqli_query($conn,$query)) {//    echo" <script> alert('ajouter is success')</script>";
+    }  else {"error";}
+   }
+?>
+        <!-- Modal -->
+<div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content model">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Payment Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body ">
+      <!-- <h2  style="text-align: center;">Payment Details</h2> -->
+        <form action="#" method="POST">
+            <label  class="label-class ">
+                Nom:
+                <input type="text" name="nome" >
+            </label>
+            <br><br>
+            <label    class="label-class">
+                Payment Schedule :
+                <input type="text" name="payment"  >
+            </label>
+            <br><br>
+            <label class="label-class">
+            Bill Number :
+                <input type="text" name="bill" >
+            </label><br><br>
+
+            <label class="label-class">
+                Amount Paid:
+                <input type="text" name="amount" >
+            </label>
+                <?php //echo $enroll; ?>
+                <br><br>
+            <label class="label-class">
+            Balance amount:
+                <input type="text" name="balance" >
+            </label>
+            <br><br>
+            <label class="label-class">
+                Date :
+                <input type="date" name="date" >
+            </label>
+            <br><br>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" name="submite" class="btn btn-primary">Ajouter </button>
+        </div>
+        </form> 
+      </div>
+     
+    </div>
+  </div>
+</div>
     <div class="container-fluid">
         <div class="row flex-nowrap"><!-- col1-->
             <?php include('sidebar.php');?>
@@ -30,7 +112,7 @@
                 <?php include 'navbar.php' ?>
                 <div class="d-flex justify-content-between mt-3   ">
                     <div >
-                        <a href="addpyment.php " class="fs-3 fw-bold me-3 ">payment details</a>
+                        <button type="button" class="btn btn-primary fs-3 fw-bold me-3" data-bs-toggle="modal" data-bs-target="#exampleModal">payment details</button>
                     </div>
                     <div class="d-flex justify-content-between align-items-center gap-3">
                         <i class="bi bi-chevron-expand fs-4 fw-bold" style="color:#00C1FE;"></i>

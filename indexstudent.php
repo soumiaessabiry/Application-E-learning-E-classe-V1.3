@@ -14,13 +14,95 @@
             <link rel="stylesheet" href="styleboot/css/bootstrap.min.css">
             <link rel="stylesheet" href="styleboot/js/bootstrap.min.js">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-            <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-            <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+            <!-- <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+            <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script> -->
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
             <script src="styleboot/js/bootstrap.min.js"></script>
+			<style>
+			a:hover{
+					background: #00C1FE;
+
+				}
+			.model{
+				background: linear-gradient(to right,#0dcaf0,#dee4b0);
+				text-align: center;
+			}
+			.label-class{
+					color:black ;
+					font-weight: bold;	
+				}
+				
+         </style>
 			
         </head>
         <body>
+			<?php 
+				//insert data 
+				if (isset($_POST['submite'])) {
+					$nom=$_POST['nome'];
+					$Email=$_POST['email'];
+					$Phone=$_POST['phone'];
+					$Enroll=$_POST['enroll'];
+					$Date=$_POST['date'];
+					$query="INSERT INTO `students`(`name`, `email`, `phone`, `enroll_number`, `date_of_admission`) VALUES ('$nom','  $Email','  $Phone','$Enroll','$Date')";
+					if (mysqli_query($conn,$query)){
+						echo "   insert student is success";
+						header('location:./indexstudent.php');
+					}else
+					{
+						 "error";
+					}
+				}
+			?>
+			<!-- Modal -->
+				<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content model">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Add new student</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+					   <h2  style="text-align: center;">Add new student</h2>
+						<form action="#" method="POST">
+							<label  class="label-class">
+								Nom:
+								<input type="text"  name="nome" >
+							</label>
+							<?php //echo $nom; ?>
+							<br><br>
+							<label    class="label-class">
+								Email :
+								<input type="email" name="email"  >
+							</label>
+							<br><br>
+							<label class="label-class">
+								Phone :
+								<input type="text" name="phone" >
+							</label><br><br>
+
+							<label class="label-class">
+								Enroll number:
+								<input type="text" name="enroll" >
+							</label>
+								<?php //echo $enroll; ?>
+								<br><br>
+							<label class="label-class">
+								Date of admossion:
+								<input type="date" name="date" >
+							</label>
+							<br><br>
+							<div class="modal-footer">
+						      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+						      <button   type="submit" name="submite" class="btn btn-primary">Add student</button>
+					        </div>
+						</form> 
+					</div>
+					
+					</div>
+				</div>
+				</div>
+			<!--fin modal  -->
             <div class="container-fluid ">
 				<?php include('sidebar.php'); ?>
 					<!-- ******************************** search******************************************* -->
@@ -33,14 +115,16 @@
 							<div class="d-flex justify-content-between align-items-center gap-3">
 								<i class="bi bi-chevron-expand fs-2 fw-bold" style="color:#00C1FE;"></i>
 								<div> 
-								<form class="d-flex">
-									<a href="insrtestuent.php"><button type="button" class="btn" style="background:#00C1FE ;">ADD NEW STUDENT</button>		</a>							</form>
+									<form class="d-flex">
+										<!-- <a href="insrtestuent.php"><button type="button" class="btn" style="background:#00C1FE ;"></button></a> -->
+										<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD NEW STUDENT</button>
+									</form>	
 								</div>
 							</div>
 						</div>
 					   <!-- ******************************** table******************************************** -->
 					   <div class="table-responsive-sm">
-					   <table  width="100%" style="text-align:center "  class="table table-hover">
+					   <table  width="100%" style="text-align:center; font-size:1.7vw;"  class="table table-hover">
 							<thead>
 									       <tr class="bg-light mt-5" style="color: #ACACAC;  height: 70px;">
 												<th scope="col"></th>
@@ -53,8 +137,7 @@
 												<th scope="col" class="align-middle"></th>
 											</tr>
 							</thead>
-
-							<tbody style="height: 352px; text-align:center">
+							<tbody style=" text-align:center">
 									<?php
 										 $query="SELECT * FROM `students` ";
 										 $data=mysqli_query($conn,$query);
@@ -72,14 +155,14 @@
 													<td>'. $student['enroll_number'].'</td>
 													<td>'. $student['date_of_admission'].'</td>
 													<td class="text-primary ">
-														<a href="modifier.php?id='. $student['id'].'"><i class="fas fa-pen pe-3"></i></a>
-														<a href="deletstuent.php?id='. $student['id'].'"><i class="fas fa-trash"></i></a>
+														<a href="modifier.php?id='. $student['id'].'"><span style="color:green;"><i class="fas fa-pen pe-3 edite"></i></span></a>
+														<a href="deletstuent.php?id='. $student['id'].'"><span style="color:red;"><i class="fas fa-trash supr " ></i></span></a>
+														
 														
 													</td>
 											    </tr>';	
 										 }
 										 mysqli_close($conn);
-
 									?>	
 							</tbody>
 					    </table>
